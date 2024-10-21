@@ -36,7 +36,7 @@ public class TallerController {
 	 * @param bindingResult
 	 * @return RespuestaServicio
 	 */
-	@RequestMapping(path = "/entregarBiciAlTaller", method = RequestMethod.PUT, produces={"application/json; charset=utf-8"})
+	@RequestMapping(path = "/entregarBiciAlTaller", method = RequestMethod.POST, produces={"application/json; charset=utf-8"})
 	public RespuestaServicio entregarBiciAlTaller(@Valid @RequestBody BicicletaAltaDTO request, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			StringBuilder sb = tratarErrores(bindingResult);
@@ -64,7 +64,7 @@ public class TallerController {
 	 * @return RespuestaServicio
 	 */
 	//@PostMapping("/actualizarEstadoReparacion")
-	@RequestMapping(path = "/actualizarEstadoReparacion", method = RequestMethod.POST, produces={"application/json; charset=utf-8"})
+	@RequestMapping(path = "/actualizarEstadoReparacion", method = RequestMethod.PUT, produces={"application/json; charset=utf-8"})
 	public RespuestaServicio actualizarEstadoReparacion(@Valid @RequestBody BicicletaModDTO request, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			StringBuilder sb = tratarErrores(bindingResult);
