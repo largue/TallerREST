@@ -15,6 +15,17 @@ import lombok.Data;
 @Data
 public class BicicletaAltaDTO {
 
+	/**
+	 * Constructor
+	 * @param color
+	 * @param numSerie
+	 */
+	public BicicletaAltaDTO(String color, @NotNull @NotBlank @Size(min = 5, max = 5) String numSerie) {
+		super();
+		this.color = color;
+		this.numSerie = numSerie;
+	}
+
 	private String color;
 	
 	@NotNull
