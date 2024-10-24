@@ -23,7 +23,7 @@ public class Bicicleta {
 	public Bicicleta() {
 		super();
 	}
-
+	
 	/**
 	 * Constructor con parámetros
 	 * @param color
@@ -43,6 +43,15 @@ public class Bicicleta {
 	public Bicicleta(int numSerie, String estadoReparacion) {
 		this.numSerie = numSerie;
 		this.estadoReparacion = estadoReparacion;
+	}
+	
+	/**
+	 * Constructor con parámetros
+	 * @param color
+	 * @param numSerie
+	 */
+	public Bicicleta(int numSerie) {
+		this.numSerie = numSerie;
 	}
 
 	/**

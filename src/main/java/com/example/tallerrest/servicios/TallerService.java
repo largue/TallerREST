@@ -22,16 +22,16 @@ public interface TallerService {
 	
 	/**
 	 * Método para la recogida de una bici cuando el trabajo está finalizado
-	 * @param numSerie
+	 * @param bicicleta
 	 * @return RespuestaServicio
-	 * @see EstadosReparacion
 	 */
-	public RespuestaServicio recogerBiciCliente(int numSerie);
+	public RespuestaServicio recogerBiciCliente(Bicicleta bicicleta);
 	
 	/**
 	 * Método que actualiza la propiedad estadoReparacion de un objeto Bicicleta
 	 * @param bicicleta
 	 * @return RespuestaServicio
+	 * @see EstadosReparacion
 	 */
 	public RespuestaServicio actualizarEstadoReparacion(Bicicleta bicicleta);
 }

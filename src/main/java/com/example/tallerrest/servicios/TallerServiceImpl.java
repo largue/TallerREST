@@ -62,29 +62,6 @@ public class TallerServiceImpl implements TallerService {
 	}
 	
 	@Override
-	public RespuestaServicio recogerBiciCliente(int numSerie) {
-		String mensaje = "";
-		Bicicleta biciAux = null;
-		
-		biciAux = buscarBicicleta(numSerie);
-		
-		if (biciAux == null) {
-			mensaje = StaticBundle.getInstance().getString("bici.no.encontrada");
-		} else {
-			if (EstadosReparacion.FINALIZADA.getCodigo().equalsIgnoreCase(biciAux.getEstadoReparacion())) {
-				bicicletaRepository.delete(biciAux);
-				
-				logger.debug(StaticBundle.getInstance().getString("info.eliminar.bici.db").replace("{0}", String.valueOf(numSerie)));
-				mensaje = StaticBundle.getInstance().getString("entrega.bici.exito");
-			} else {
-				mensaje = StaticBundle.getInstance().getString("entrega.bici.error");
-			}
-		}
-		
-		return new RespuestaServicio(mensaje);
-	}
-
-	@Override
 	public RespuestaServicio actualizarEstadoReparacion(Bicicleta bicicleta) {
 		String mensaje = "";
 		Bicicleta bicicletaAux = null;
@@ -98,6 +75,30 @@ public class TallerServiceImpl implements TallerService {
 			bicicletaRepository.save(bicicletaAux);
 			
 			mensaje = StaticBundle.getInstance().getString("actualizar.estado.reparacion");
+		}
+		
+		return new RespuestaServicio(mensaje);
+	}
+	
+	@Override
+	public RespuestaServicio recogerBiciCliente(Bicicleta bicicleta) {
+		String mensaje = "";
+		Bicicleta biciAux = null;
+		
+		biciAux = buscarBicicleta(bicicleta.getNumSerie());
+		
+		if (biciAux == null) {
+			mensaje = StaticBundle.getInstance().getString("bici.no.encontrada");
+		} else {
+			if (EstadosReparacion.FINALIZADA.getCodigo().equalsIgnoreCase(biciAux.getEstadoReparacion())) {
+				bicicletaRepository.delete(biciAux);
+				
+				logger.debug(StaticBundle.getInstance().getString("info.eliminar.bici.db").replace("{0}",
+						String.valueOf(bicicleta.getNumSerie())));
+				mensaje = StaticBundle.getInstance().getString("entrega.bici.exito");
+			} else {
+				mensaje = StaticBundle.getInstance().getString("entrega.bici.error");
+			}
 		}
 		
 		return new RespuestaServicio(mensaje);

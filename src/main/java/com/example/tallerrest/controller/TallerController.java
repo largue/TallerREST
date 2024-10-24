@@ -10,10 +10,10 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.tallerrest.model.BicicletaAltaDTO;
+import com.example.tallerrest.model.BicicletaBorrDTO;
 import com.example.tallerrest.model.BicicletaModDTO;
 import com.example.tallerrest.model.RespuestaServicio;
 import com.example.tallerrest.servicios.TallerService;
@@ -31,7 +31,7 @@ public class TallerController {
 	private TallerService tallerService;
 	
 	/**
-	 * Método PUT /entregarBiciAlTaller
+	 * Método POST /entregarBiciAlTaller
 	 * @param request
 	 * @param bindingResult
 	 * @return RespuestaServicio
@@ -48,22 +48,11 @@ public class TallerController {
 	}
 	
 	/**
-	 * Método GET /recogerBiciCliente
-	 * @param numSerie
-	 * @return RespuestaServicio
-	 */
-	@RequestMapping(path = "/recogerBiciCliente", method = RequestMethod.GET, produces={"application/json; charset=utf-8"})
-	public RespuestaServicio recogerBiciCliente(@RequestParam("numSerie") int numSerie) {
-		return tallerService.recogerBiciCliente(numSerie);
-	}
-	
-	/**
-	 * Método POST /actualizarEstadoReparacion
+	 * Método PUT /actualizarEstadoReparacion
 	 * @param request
 	 * @param bindingResult
 	 * @return RespuestaServicio
 	 */
-	//@PostMapping("/actualizarEstadoReparacion")
 	@RequestMapping(path = "/actualizarEstadoReparacion", method = RequestMethod.PUT, produces={"application/json; charset=utf-8"})
 	public RespuestaServicio actualizarEstadoReparacion(@Valid @RequestBody BicicletaModDTO request, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
@@ -72,6 +61,22 @@ public class TallerController {
 			return new RespuestaServicio(sb);
         } else {
 			return tallerService.actualizarEstadoReparacion(request.toBicicleta());
+        }
+	}
+	
+	/**
+	 * Método DELETE /recogerBiciCliente
+	 * @param numSerie
+	 * @return RespuestaServicio
+	 */
+	@RequestMapping(path = "/recogerBiciCliente", method = RequestMethod.DELETE, produces={"application/json; charset=utf-8"})
+	public RespuestaServicio recogerBiciCliente(@Valid @RequestBody BicicletaBorrDTO request, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			StringBuilder sb = tratarErrores(bindingResult);
+			
+			return new RespuestaServicio(sb);
+        } else {
+        	return tallerService.recogerBiciCliente(request.toBicicleta());
         }
 	}
 	
