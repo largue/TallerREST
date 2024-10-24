@@ -16,6 +16,18 @@ import lombok.Data;
 @Data
 public class BicicletaModDTO {
 
+	/**
+	 * Constructor
+	 * @param numSerie
+	 * @param estadoReparacion
+	 */
+	public BicicletaModDTO(@NotNull @NotBlank @Size(min = 5, max = 5) String numSerie,
+			@NotNull @NotBlank @Pattern(regexp = "[0 - 1 - 2]") String estadoReparacion) {
+		super();
+		this.numSerie = numSerie;
+		this.estadoReparacion = estadoReparacion;
+	}
+
 	@NotNull
 	@NotBlank
 	@Size(min = 5, max = 5)
