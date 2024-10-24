@@ -65,11 +65,11 @@ public class TallerController {
 	}
 	
 	/**
-	 * Método DELETE /recogerBiciCliente
+	 * Método PUT /recogerBiciCliente
 	 * @param numSerie
 	 * @return RespuestaServicio
 	 */
-	@RequestMapping(path = "/recogerBiciCliente", method = RequestMethod.DELETE, produces={"application/json; charset=utf-8"})
+	@RequestMapping(path = "/recogerBiciCliente", method = RequestMethod.PUT, produces={"application/json; charset=utf-8"})
 	public RespuestaServicio recogerBiciCliente(@Valid @RequestBody BicicletaBorrDTO request, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			StringBuilder sb = tratarErrores(bindingResult);
