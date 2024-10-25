@@ -7,15 +7,15 @@ package com.example.tallerrest.utils;
 /**
  * Enumerador con los distintos estados del proceso de una reparación
  */
-public enum EstadosReparacion {
+public enum EstadosReparacionEnum {
 
 	PENDIENTE("0"),
-	ENPROCESO("2"),
+	ENCURSO("2"),
 	FINALIZADA("1");
 
 	private String codigo;
 	
-	private EstadosReparacion(String codigo) {
+	private EstadosReparacionEnum(String codigo) {
 		this.codigo = codigo;
 	}
 	

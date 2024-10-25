@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.example.tallerrest.utils.EstadosReparacion;
+import com.example.tallerrest.utils.EstadosReparacionEnum;
 
 import lombok.Data;
 
@@ -34,7 +34,7 @@ public class Bicicleta {
 	public Bicicleta(String color, int numSerie) {
 		this.color = color;
 		this.numSerie = numSerie;
-		this.estadoReparacion = EstadosReparacion.PENDIENTE.getCodigo();
+		this.estadoReparacion = EstadosReparacionEnum.PENDIENTE.getCodigo();
 	}
 	
 	/**

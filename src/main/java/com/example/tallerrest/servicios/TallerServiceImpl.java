@@ -19,7 +19,7 @@ import com.example.tallerrest.model.Bicicleta;
 import com.example.tallerrest.model.BicicletaDTO;
 import com.example.tallerrest.model.RespuestaServicio;
 import com.example.tallerrest.repository.BicicletaRepository;
-import com.example.tallerrest.utils.EstadosReparacion;
+import com.example.tallerrest.utils.EstadosReparacionEnum;
 import com.example.tallerrest.utils.StaticBundle;
 
 /**
@@ -92,7 +92,7 @@ public class TallerServiceImpl implements TallerService {
 		if (biciAux == null) {
 			mensaje = StaticBundle.getInstance().getString("bici.no.encontrada");
 		} else {
-			if (EstadosReparacion.FINALIZADA.getCodigo().equalsIgnoreCase(biciAux.getEstadoReparacion())) {
+			if (EstadosReparacionEnum.FINALIZADA.getCodigo().equalsIgnoreCase(biciAux.getEstadoReparacion())) {
 				bicicletaRepository.delete(biciAux);
 				
 				logger.debug(StaticBundle.getInstance().getString("info.eliminar.bici.db").replace("{0}",
@@ -137,10 +137,11 @@ public class TallerServiceImpl implements TallerService {
 		
 		biciDTO.setColor(biciBD.getColor());
 		biciDTO.setNumSerie(biciBD.getNumSerie());
+		biciDTO.setEstadoReparacion(biciBD.getEstadoReparacion());
 		
-		for (EstadosReparacion er : EstadosReparacion.values()) {
+		for (EstadosReparacionEnum er : EstadosReparacionEnum.values()) {
 			if (er.getCodigo().equals(biciBD.getEstadoReparacion())) {
-				biciDTO.setEstadoReparacion(er.name());
+				biciDTO.setEstadoReparacionAsString(er.name());
 				break;
 			}
 		}

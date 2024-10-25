@@ -9,7 +9,7 @@ import java.util.List;
 import com.example.tallerrest.model.Bicicleta;
 import com.example.tallerrest.model.BicicletaDTO;
 import com.example.tallerrest.model.RespuestaServicio;
-import com.example.tallerrest.utils.EstadosReparacion;
+import com.example.tallerrest.utils.EstadosReparacionEnum;
 
 /**
  * Interfaz para el servicio del taller
@@ -34,7 +34,7 @@ public interface TallerService {
 	 * Método que actualiza la propiedad estadoReparacion de un objeto Bicicleta
 	 * @param bicicleta
 	 * @return RespuestaServicio
-	 * @see EstadosReparacion
+	 * @see EstadosReparacionEnum
 	 */
 	public RespuestaServicio actualizarEstadoReparacion(Bicicleta bicicleta);
 	

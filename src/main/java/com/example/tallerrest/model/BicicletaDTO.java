@@ -24,4 +24,6 @@ public class BicicletaDTO {
 	private int numSerie;
 	
 	private String estadoReparacion;
+	
+	private String estadoReparacionAsString;
 }
