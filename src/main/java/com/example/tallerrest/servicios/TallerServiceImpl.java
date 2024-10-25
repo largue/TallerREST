@@ -5,6 +5,7 @@
 package com.example.tallerrest.servicios;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.example.tallerrest.model.Bicicleta;
+import com.example.tallerrest.model.BicicletaDTO;
 import com.example.tallerrest.model.RespuestaServicio;
 import com.example.tallerrest.repository.BicicletaRepository;
 import com.example.tallerrest.utils.EstadosReparacion;
@@ -105,8 +107,15 @@ public class TallerServiceImpl implements TallerService {
 	}
 	
 	@Override
-	public List<Bicicleta> obtenerBicisTaller() {
-		return bicicletaRepository.findAll();
+	public List<BicicletaDTO> obtenerBicisTaller() {
+		List<Bicicleta> listaBicisBD = bicicletaRepository.findAll();
+		List<BicicletaDTO> listaBicis = new ArrayList<BicicletaDTO>();
+		
+		listaBicisBD.forEach(biciBD -> {
+			listaBicis.add(bicicletaToBicicletaDTO(biciBD));
+		});
+		
+		return listaBicis;
 	}
 	
 	/**
@@ -116,5 +125,21 @@ public class TallerServiceImpl implements TallerService {
 	 */
 	private Bicicleta buscarBicicleta(int numSerie) {
 		return bicicletaRepository.findByNumSerie(numSerie);
+	}
+	
+	private BicicletaDTO bicicletaToBicicletaDTO(Bicicleta biciBD) {
+		BicicletaDTO biciDTO = new BicicletaDTO();
+		
+		biciDTO.setColor(biciBD.getColor());
+		biciDTO.setNumSerie(biciBD.getNumSerie());
+		
+		for (EstadosReparacion er : EstadosReparacion.values()) {
+			if (er.getCodigo().equals(biciBD.getEstadoReparacion())) {
+				biciDTO.setEstadoReparacion(er.name());
+				break;
+			}
+		}
+		
+		return biciDTO;
 	}
 }

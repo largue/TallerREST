@@ -7,6 +7,7 @@ package com.example.tallerrest.servicios;
 import java.util.List;
 
 import com.example.tallerrest.model.Bicicleta;
+import com.example.tallerrest.model.BicicletaDTO;
 import com.example.tallerrest.model.RespuestaServicio;
 import com.example.tallerrest.utils.EstadosReparacion;
 
@@ -37,5 +38,5 @@ public interface TallerService {
 	 */
 	public RespuestaServicio actualizarEstadoReparacion(Bicicleta bicicleta);
 	
-	public List<Bicicleta> obtenerBicisTaller();
+	public List<BicicletaDTO> obtenerBicisTaller();
 }

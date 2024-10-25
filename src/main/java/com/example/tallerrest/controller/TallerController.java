@@ -12,11 +12,12 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.tallerrest.model.Bicicleta;
 import com.example.tallerrest.model.BicicletaAltaDTO;
 import com.example.tallerrest.model.BicicletaBorrDTO;
+import com.example.tallerrest.model.BicicletaDTO;
 import com.example.tallerrest.model.BicicletaModDTO;
 import com.example.tallerrest.model.RespuestaServicio;
 import com.example.tallerrest.servicios.TallerService;
@@ -89,7 +90,7 @@ public class TallerController {
 	 * @return RespuestaServicio
 	 */
 	@RequestMapping(path = "/obtenerBicisTaller", method = RequestMethod.GET, produces={"application/json; charset=utf-8"})
-	public List<Bicicleta> obtenerBicisTaller() {
+	public @ResponseBody List<BicicletaDTO> obtenerBicisTaller() {
 		return tallerService.obtenerBicisTaller();
 	}
 	
