@@ -104,6 +104,11 @@ public class TallerServiceImpl implements TallerService {
 		return new RespuestaServicio(mensaje);
 	}
 	
+	@Override
+	public List<Bicicleta> obtenerBicisTaller() {
+		return bicicletaRepository.findAll();
+	}
+	
 	/**
 	 * Método para buscar una Bicicleta en el sistema a partir de su numSerie
 	 * @param numSerie
