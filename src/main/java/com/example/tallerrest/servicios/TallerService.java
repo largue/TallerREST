@@ -38,5 +38,9 @@ public interface TallerService {
 	 */
 	public RespuestaServicio actualizarEstadoReparacion(Bicicleta bicicleta);
 	
+	/**
+	 * Método para recuperar todas las bicicletas del sistema
+	 * @return List<BicicletaDTO>
+	 */
 	public List<BicicletaDTO> obtenerBicisTaller();
 }

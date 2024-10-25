@@ -7,7 +7,7 @@ package com.example.tallerrest.model;
 import lombok.Data;
 
 /**
- * Clase para mostrar en pantalla un objeto de tipo Bicicleta
+ * Clase para mostrar en pantalla un objeto de tipo BicicletaDTO
  */
 @Data
 public class BicicletaDTO {

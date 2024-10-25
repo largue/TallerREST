@@ -127,6 +127,11 @@ public class TallerServiceImpl implements TallerService {
 		return bicicletaRepository.findByNumSerie(numSerie);
 	}
 	
+	/**
+	 * Método que a partir de un objeto Bicicleta construye uno de tipo BicicletaDTO para mostrar en ventana
+	 * @param biciBD
+	 * @return
+	 */
 	private BicicletaDTO bicicletaToBicicletaDTO(Bicicleta biciBD) {
 		BicicletaDTO biciDTO = new BicicletaDTO();
 		
