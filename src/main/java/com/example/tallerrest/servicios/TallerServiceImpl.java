@@ -23,7 +23,7 @@ import com.example.tallerrest.utils.EstadosReparacionEnum;
 import com.example.tallerrest.utils.StaticBundle;
 
 /**
- * Implementación de la interfaz para el servicio del taller
+ * Implementación del interfaz para el servicio del taller
  */
 @Service
 public class TallerServiceImpl implements TallerService {
